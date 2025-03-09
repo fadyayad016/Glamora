@@ -1,0 +1,13 @@
+
+<select class="form-select mb-3" aria-label="Default select example" [(ngModel)]="SelectedId">
+  <option value="" disabled selected>Select a category</option>
+  @for (cat of catlist; track cat) {
+    <option value="{{cat.id}}">{{cat.name}}</option>
+  }
+</select>
+<hr>
+<app-product [recivedId]="SelectedId" (total)="RecievedPrice($event)"></app-product>
+<hr>
+<h1>total Price:{{totalproductprice}}</h1>
+
+
