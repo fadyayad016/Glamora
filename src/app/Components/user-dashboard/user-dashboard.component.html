@@ -1,0 +1,25 @@
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of data; track user.id) {
+        <tr>
+          <td>{{ user.fullname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.age }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm me-2" (click)="deleteUser(user.id)">Delete</button>
+            <a [routerLink]="user.id" class="btn btn-dark btn-sm">User Details</a>
+          </td>
+          
+        </tr>
+      }
+    </tbody>
+  </table>
+  

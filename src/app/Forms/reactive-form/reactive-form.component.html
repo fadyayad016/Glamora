@@ -1,0 +1,74 @@
+<!-- <h1>{{userregister.value|json}}</h1>
+<h1>{{userregister.get('fullname')?.errors|json}}</h1> -->
+<br><br>
+
+<form action="" [formGroup]="userregister" class="mx-auto col-md-6 col-lg-4">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control placeholder-small" id="floatingInput" placeholder="Enter FullName" formControlName="fullname">
+        <label for="floatingInput">FullName</label>
+        <div [hidden]="fullname?.valid || fullname?.untouched" class="mt-2">
+            @if (fullname?.errors?.['required']) {
+                <small class="text-danger">Fullname is required</small>
+            }
+            @if (fullname?.errors?.['pattern']) {
+                <small class="text-danger">
+                    Fullname must be at least 3 characters. {{ fullname?.errors?.['pattern'].actualValue }} doesn't match.
+                </small>
+            }
+        </div>
+    </div>        
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control placeholder-small" id="floatingInput" placeholder="Enter age" formControlName="age">
+        <label for="floatingInput">Age</label>
+        <div [hidden]="age?.valid || age?.untouched" class="mt-2">
+            @if (age?.errors?.['required']) {
+                <small class="text-danger">Age is required</small>
+            }
+        </div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control placeholder-small" id="floatingInput" placeholder="name@example.com" formControlName="email">
+        <label for="floatingInput">Email address</label>
+        <div [hidden]="email?.valid || email?.untouched" class="mt-2">
+            @if (email?.errors?.['required']) {
+                <small class="text-danger">Email is required</small>
+            }
+            @if (email?.errors?.['invalidEmail'] && email?.value) {
+                <small class="text-danger">Please enter a valid email address</small>
+            }
+            @if (email?.errors?.['emailExist']) {
+                <small class="text-danger">This email already exists</small>
+            }
+        </div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control placeholder-small" id="floatingInput" placeholder="Enter password" formControlName="password">
+        <label for="floatingInput">Password</label>
+        <div [hidden]="password?.valid || password?.untouched" class="mt-2">
+            @if (password?.errors?.['required']) {
+                <small class="text-danger">Password is required</small>
+            }
+            @if (userregister.errors?.['invalidEmail']) {
+                <small class="text-danger">Please enter a valid email address</small>
+            }
+            @if (userregister.errors?.['emailexist']) {
+                <small class="text-danger">This email already exists</small>
+            }
+        </div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control placeholder-small" id="floatingInput" placeholder="Enter confirmed password" formControlName="confirmedpassword">
+        <label for="floatingInput">Confirmed Password</label>
+        @if((confirmedpassword?.touched && password?.touched) && (userregister.errors?.['unmatchedpass'] || confirmedpassword?.invalid)) {
+            <div class="mt-2">
+                @if(confirmedpassword?.errors?.['required']) {
+                    <small class="text-danger">Confirmed password is required</small>
+                }
+                @if(userregister.errors?.['unmatchedpass']) {
+                    <small class="text-danger">Confirmed password must match password</small>
+                }
+            </div>
+        }
+    </div>
+    <button class="btn btn-dark w-100 py-2" [disabled]="userregister.invalid" (click)="onSubmit()">Submit</button>
+</form>

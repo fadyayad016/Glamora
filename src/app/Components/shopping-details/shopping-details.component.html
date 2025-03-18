@@ -1,0 +1,25 @@
+<div class="card h-100">
+    <img class="card-img-top" [src]="prd.thumbnail" alt="Product Image">
+
+    <div class="card-body">
+        <h4 class="card-title">{{ prd.title }}</h4>
+
+        <p class="card-text">{{ prd.description }}</p>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <strong>Price:</strong> ${{ prd.price }}
+            </li>
+            <li class="list-group-item">
+                <strong>Rating:</strong> 
+                <span class="text-warning"> {{ prd.rating }}</span> / 5
+            </li>
+           
+        </ul>
+    </div>
+
+    <div class="card-footer bg-transparent border-0">
+        <button class="btn btn-primary">Add to Cart</button>
+       
+    </div>
+</div>

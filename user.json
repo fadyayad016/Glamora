@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "fullname": "Fady ayad",
+      "age": "25",
+      "email": "fadyayad00@gmail.com",
+      "password": "admin123",
+      "confirmedpassword": "admin123"
+    },
+    {
+      "id": "2",
+      "fullname": "Mina",
+      "age": 26,
+      "email": "mina@gmail.com",
+      "password": "user123",
+      "confirmedpassword": "user123"
+    }
+  ]
+}

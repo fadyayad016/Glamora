@@ -1,0 +1,43 @@
+<div class="card h-100">
+    <!-- Reactive Form -->
+    <form [formGroup]="productForm" (ngSubmit)="ID?Edit():add()">
+
+        <div class="mb-3">
+            <label for="imageUrl" class="form-label"> Image URL</label>
+            <input type="text" id="imageUrl" formControlName="thumbnail" class="form-control" placeholder="Enter Image URL">
+        </div>
+
+        @if (productForm.value.thumbnail) {
+            <img class="card-img-top" [src]="productForm.value.thumbnail" alt="Product Image">
+        }
+        
+
+        <div class="card-body">
+            <h4 class="card-title">
+                <input type="text" formControlName="title" class="form-control" placeholder="Enter Product Title">
+            </h4>
+
+            <p class="card-text">
+                <textarea formControlName="description" class="form-control" placeholder="Enter Product Description"></textarea>
+            </p>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Price:</strong> 
+                    <input type="number" formControlName="price" class="form-control" placeholder="Enter Price">
+                </li>
+                <li class="list-group-item">
+                    <strong>Rating:</strong>
+                    <input type="number" formControlName="rating" class="form-control" placeholder="Enter Rating (1-5)">
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="card-footer bg-transparent border-0">
+            <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">
+                {{ ID ? 'Edit Product' : 'Add Product' }}
+            </button>
+        </div>
+    </form>
+</div>

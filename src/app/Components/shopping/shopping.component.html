@@ -1,0 +1,19 @@
+<div class="row">
+    @for (p of data; track p.id) { 
+        <div class="col-12 col-lg-4 mb-4">
+            <div class="card h-100">
+                <a [routerLink]="p.id" class="text-decoration-none text-dark">
+                    <img class="card-img-top" [src]="p.thumbnail" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ p.title| productdescription: false  }}</h4>
+                        <p class="card-text">{{ p.description | productdescription: false }}</p>
+                    </div>
+                </a>
+                <div class="card-footer bg-transparent border-0">
+                    <button class="btn btn-danger btn-sm me-2" (click)="Deleteprd(p.id)">Del</button>
+                    <a [routerLink]="['/addandedit', p.id]" class="btn btn-dark btn-sm">Edit</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

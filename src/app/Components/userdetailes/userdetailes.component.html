@@ -1,0 +1,15 @@
+<div class="card shadow-sm p-4">
+    <h2 class="text-center mb-4">User Details</h2>
+  
+    @if (user) {
+      <p><strong>ID:</strong> {{ user.id }}</p>
+      <p><strong>Full Name:</strong> {{ user.fullname }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Age:</strong> {{ user.age }}</p>
+      <p><strong>user password:</strong> {{ user.password }}</p>
+  
+    } @else {
+      <p class="text-center">Loading user details...</p>
+    }
+  </div>
+  
