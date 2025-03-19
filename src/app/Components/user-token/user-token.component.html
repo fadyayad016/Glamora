@@ -1,0 +1,46 @@
+<h2 class="text-center mb-4 mt-5">Login</h2>
+
+<form action="" [formGroup]="userregister" class="mx-auto col-md-6 col-lg-4">  
+    <!-- Existing form fields -->
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="fullname" 
+               placeholder="Enter FullName" formControlName="fullname"
+               [class.is-invalid]="fullname?.invalid && (fullname?.touched || fullname?.dirty)">
+        <label for="fullname">Full Name</label>
+        
+        @if (fullname?.errors?.['required'] && (fullname?.touched || fullname?.dirty)) {
+            <div class="invalid-feedback">
+                Full Name is required
+            </div>
+        }
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="password" 
+               placeholder="Enter password" formControlName="password"
+               [class.is-invalid]="password?.invalid && (password?.touched || password?.dirty)">
+        <label for="password">Password</label>
+        
+        @if (password?.errors?.['required'] && (password?.touched || password?.dirty)) {
+            <div class="invalid-feedback">
+                Password is required
+            </div>
+        }
+    </div>
+
+    <button class="btn btn-dark w-100 py-2 mb-3" 
+            [disabled]="userregister.invalid" 
+            (click)="onSubmit()">
+        Submit
+    </button>
+
+    <!-- Add signup suggestion -->
+    @if (showSignupLink) {
+        <div class="text-center mt-3">
+            <p>User not found. Would you like to sign up?</p>
+            <button class="btn btn-outline-dark" (click)="navigateToSignup()">
+                Go to Signup
+            </button>
+        </div>
+    }
+</form>

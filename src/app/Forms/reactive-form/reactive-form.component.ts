@@ -10,7 +10,7 @@ import { HttpClientJsonpModule } from '@angular/common/http';
 @Component({
   selector: 'app-reactive-form',
   standalone: true,
-  imports: [ReactiveFormsModule, JsonPipe, HttpClientJsonpModule],
+  imports: [ReactiveFormsModule, HttpClientJsonpModule],
   providers: [DynamicUserService],
   templateUrl: './reactive-form.component.html',
   styleUrl: './reactive-form.component.css'

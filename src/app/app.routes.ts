@@ -12,24 +12,26 @@ import { AddAndEditProductComponent } from './Components/add-and-edit-product/ad
 import { UserDashboardComponent } from './Components/user-dashboard/user-dashboard.component';
 import { UserdetailesComponent } from './Components/userdetailes/userdetailes.component';
 import { OrderComponent } from './Components/order/order.component';
+import { UserTokenComponent } from './Components/user-token/user-token.component';
+import { userGuard } from '../Guards/user.guard';
 
 export const routes: Routes = [
 
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: MasterproductComponent },
-    { path: 'Showproduct', component: ProductComponent },
-    { path: 'productdtailes/:id', component: ProductDetailesComponent },
-    { path: 'reactive', component: ReactiveFormComponent },
-    { path: 'shop', component: ShoppingComponent },
-    { path: 'shop/:id', component: ShoppingDetailsComponent },
-    { path: 'addandedit', component: AddAndEditProductComponent },
-    {path:'addandedit/:id', component:AddAndEditProductComponent},
-    { path: 'about', component: AboutComponent },
-    { path: 'Users', component: UserDashboardComponent },
-{ path: 'order', loadComponent: () => import('./Components/order/order.component').then(m => m.OrderComponent) },
-    { path: 'Users/:id', component: UserdetailesComponent },
+    // { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-
-    { path: '**', component: ErrorComponent },
+    { path: '', component: UserTokenComponent },
+    { path: 'home', component: MasterproductComponent,canActivate:[userGuard]},
+    // { path: 'Showproduct', component: ProductComponent },
+    { path: 'productdtailes/:id', component: ProductDetailesComponent, canActivate: [userGuard] },
+    { path: 'reactive', component: ReactiveFormComponent, canActivate: [userGuard] },
+    { path: 'shop', component: ShoppingComponent, canActivate: [userGuard] },
+    { path: 'shop/:id', component: ShoppingDetailsComponent, canActivate: [userGuard] },
+    { path: 'addandedit', component: AddAndEditProductComponent, canActivate: [userGuard] },
+    { path: 'addandedit/:id', component: AddAndEditProductComponent, canActivate: [userGuard] },
+    // { path: 'about', component: AboutComponent },
+    { path: 'Users', component: UserDashboardComponent, canActivate: [userGuard] },
+    { path: 'order', loadComponent: () => import('./Components/order/order.component').then(m => m.OrderComponent), canActivate: [userGuard] },  // Lazy Loading 
+    { path: 'Users/:id', component: UserdetailesComponent, canActivate: [userGuard] },
+    { path: '**', component: ErrorComponent, canActivate: [userGuard] },
 
 ];
